@@ -13,7 +13,7 @@ source:
 
 build:
   number: 3
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps ---no-build-isolation -vv
 
 requirements:
   host:
@@ -38,6 +38,11 @@ about:
   dev_url: https://github.com/python-hyper/hyper-h2
 
 extra:
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/48409
+    reason: Dependenccy for msgraph-sdk
+    recipe-maintainers:
+      - ianaobi
   recipe-maintainers:
     - primozgodec
     - wiphoo
