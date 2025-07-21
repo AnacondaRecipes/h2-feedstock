@@ -6,7 +6,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: c8a52129695e88b1a0578d8d2cc6842bbd79128ac685463b887ee278126ad01f
 
@@ -22,8 +21,8 @@ requirements:
     - pip
   run:
     - python
-    - hyperframe    >=6.0,<7
-    - hpack         >=4.0,<5
+    - hyperframe    >=6.1,<7
+    - hpack         >=4.1,<5
 
 test:
   imports:
