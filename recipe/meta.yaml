@@ -1,6 +1,5 @@
 {% set name = "h2" %}
-{% set version = "4.0.0" %}
-{% set sha256 = "bb7ac7099dd67a857ed52c815a6192b6b1f5ba6b516237fc24a085341340593d" %}
+{% set version = "4.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -9,10 +8,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: c8a52129695e88b1a0578d8d2cc6842bbd79128ac685463b887ee278126ad01f
 
 build:
-  number: 3
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
