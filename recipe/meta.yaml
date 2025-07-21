@@ -29,7 +29,7 @@ test:
     - h2
 
 about:
-  home: http://python-hyper.org/h2/
+  home: https://python-hyper.org/projects/hyper-h2
   license: MIT
   license_family: MIT
   license_file: LICENSE
