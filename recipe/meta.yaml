@@ -19,6 +19,7 @@ requirements:
     - python
     - setuptools
     - pip
+    - wheel
   run:
     - python
     - hyperframe    >=6.1,<7
@@ -27,6 +28,9 @@ requirements:
 test:
   imports:
     - h2
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
 
 about:
   home: https://python-hyper.org/projects/hyper-h2
