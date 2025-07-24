@@ -45,7 +45,17 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: HTTP/2 State-Machine based protocol implementation
+  description: |
+    h2 is a HTTP/2 protocol stack, written entirely in Python.
+    The goal of h2 is to be a common HTTP/2 stack for the Python
+    ecosystem, usable in all programs regardless of concurrency
+    model or environment.
+    To achieve this, h2 is entirely self-contained: it does
+    no I/O of any kind, leaving that up to a wrapper library to
+    control. This ensures that it can seamlessly work in all kinds
+    of environments, from single-threaded code to Twisted.
   dev_url: https://github.com/python-hyper/hyper-h2
+  doc_url: https://python-hyper.org/projects/hyper-h2
 
 extra:
   recipe-maintainers:
