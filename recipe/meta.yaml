@@ -1,41 +1,62 @@
 {% set name = "h2" %}
-{% set version = "4.0.0" %}
-{% set sha256 = "bb7ac7099dd67a857ed52c815a6192b6b1f5ba6b516237fc24a085341340593d" %}
+{% set version = "4.2.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: c8a52129695e88b1a0578d8d2cc6842bbd79128ac685463b887ee278126ad01f
 
 build:
-  number: 3
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  skip: true  # [py<39]
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv
 
 requirements:
   host:
     - python
     - setuptools
     - pip
+    - wheel
   run:
     - python
-    - hyperframe    >=6.0,<7
-    - hpack         >=4.0,<5
+    - hyperframe    >=6.1,<7
+    - hpack         >=4.1,<5
 
 test:
+  source_files:
+    - tests
   imports:
     - h2
+  requires:
+    - python
+    - pip
+    - pytest >=8.3.3,<9
+    - hypothesis >=6.119.4,<7
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -vv tests
 
 about:
-  home: http://python-hyper.org/h2/
+  home: https://github.com/python-hyper/h2
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: HTTP/2 State-Machine based protocol implementation
-  dev_url: https://github.com/python-hyper/hyper-h2
+  description: |
+    h2 is a HTTP/2 protocol stack, written entirely in Python.
+    The goal of h2 is to be a common HTTP/2 stack for the Python
+    ecosystem, usable in all programs regardless of concurrency
+    model or environment.
+    To achieve this, h2 is entirely self-contained: it does
+    no I/O of any kind, leaving that up to a wrapper library to
+    control. This ensures that it can seamlessly work in all kinds
+    of environments, from single-threaded code to Twisted.
+  dev_url: https://github.com/python-hyper/h2
+  doc_url: https://python-hyper.org
 
 extra:
   recipe-maintainers:
