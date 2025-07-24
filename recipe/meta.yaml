@@ -55,7 +55,7 @@ about:
     no I/O of any kind, leaving that up to a wrapper library to
     control. This ensures that it can seamlessly work in all kinds
     of environments, from single-threaded code to Twisted.
-  dev_url: https://github.com/python-hyper/hyper-h2
+  dev_url: https://github.com/python-hyper/h2
   doc_url: https://python-hyper.org
 
 extra:
