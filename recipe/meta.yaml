@@ -33,7 +33,7 @@ test:
   requires:
     - python
     - pip
-    - pytest >=8.3.3,<9
+    - pytest >=8.3.3,<10
     - hypothesis >=6.119.4,<7
   commands:
     - pip check
